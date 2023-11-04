@@ -5,7 +5,7 @@ $result = $conn->query($sql);
 ?>
 
 <div class="row">
-    <div class="column">
+    <div class="col-md-6">
         <!-- Left Side -->
         <table class="content-table">
             <thead>
@@ -39,7 +39,7 @@ $result = $conn->query($sql);
             </tbody>
         </table>
     </div>
-    <div class="column">
+    <div class="col-md-6">
         <!-- Right side -->
         <table class="content-table">
             <thead>
