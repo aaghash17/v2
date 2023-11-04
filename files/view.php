@@ -19,7 +19,7 @@
     <?php require_once 'viewtable.php'; ?>
   </div>
   <script>
-    var result = "";
+    let result;
 
     function refreshDiv() {
       fetch('viewtable.php')
@@ -30,7 +30,10 @@
         .catch(error => {
           alert("Cant Fetch");
         });
-      document.getElementById("refreshedDiv").innerHTML = result;
+      if (typeof result === 'undefined') {} else {
+        document.getElementById("refreshedDiv").innerHTML = result;
+      }
+
     }
     setInterval(refreshDiv, 1000);
   </script>
