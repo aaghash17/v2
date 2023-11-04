@@ -127,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="custom-select">
       <select name="tboard_in" id="tboard_in" onchange="fetchvalue();">
+        <option value="none" selected disabled hidden>Select a board</option>
         <option value="1">Board-1</option>
         <option value="2">Board-2</option>
         <option value="3">Board-3</option>
@@ -143,11 +144,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input class="radio" id="one" value="A" name="group" type="radio" onchange="fetchvalue();">
       <input class="radio" id="two" value="B" name="group" type="radio" onchange="fetchvalue();">
       <input class="radio" id="three" value="C" name="group" type="radio" onchange="fetchvalue();">
+      <!--input class="radio" id="four" value="D" name="group" type="radio" onchange="fetchvalue();"-->
 
       <div class="tabs">
-        <label class="tab" id="one-tab" for="one">Target A</label>
-        <label class="tab" id="two-tab" for="two">Target B</label>
-        <label class="tab" id="three-tab" for="three">Target C</label>
+        <label class="tab" id="one-tab" for="one">A</label>
+        <label class="tab" id="two-tab" for="two">B</label>
+        <label class="tab" id="three-tab" for="three">C</label>
+        <!--label class="tab" id="four-tab" for="four">D</label-->
       </div>
     </div>
 

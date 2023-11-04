@@ -24,21 +24,20 @@
 
 /*---------select button------------*/
 
-
-.custom-select{
+.custom-select {
   text-align: center;
 }
 
-select{
+select {
   border: none;
   padding: 5px 5px;
-  border-radius:5px;
+  border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 0.5rem 0.8rem #00000080;
 }
 
-select:focus{
-  outline:none;
+select:focus {
+  outline: none;
 }
 
 /*---------tab selection------------*/
@@ -91,16 +90,12 @@ select:focus{
 
 #one:checked ~ .tabs #one-tab,
 #two:checked ~ .tabs #two-tab,
-#three:checked ~ .tabs #three-tab {
+#three:checked ~ .tabs #three-tab,
+#four:checked ~ .tabs #four-tab {
   background: #fff;
   color: #000;
   border-top: 3px solid #32557f;
 }
-
-
-
-
-
 
 /*---------person details------------*/
 .person-details {
@@ -128,6 +123,3 @@ select:focus{
   position: relative;
   margin-top: 2%;
 }
-
-
-
