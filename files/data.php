@@ -153,11 +153,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="person-details">
       <div class="group-1">
-        <div class="group-1-text">NAME -</div>
-        <div class="group-1-text">DISTRICT -</div>
-        <div class="group-1-text">SEX -</div>
-        <div class="group-1-text">AGE -</div>
-        <div class="group-1-text">BOW -</div>
+        <div class="group-1-text">NAME -&nbsp;</div>
+        <div class="group-1-text">DISTRICT -&nbsp;</div>
+        <div class="group-1-text">SEX -&nbsp;</div>
+        <div class="group-1-text">AGE -&nbsp;</div>
+        <div class="group-1-text">BOW -&nbsp;s</div>
       </div>
       <div class="group-2">
         <div class="group-2-text"><label id="pname">!!!</label></div>
