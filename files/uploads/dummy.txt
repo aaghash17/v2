@@ -1,0 +1,1 @@
+A textfile to prevent the erase of upload folder
