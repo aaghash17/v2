@@ -385,7 +385,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
   </div>
-  <script src="datascript.js"></script>
+  <script src="js/datascript.js"></script>
 </body>
 
 </html>
