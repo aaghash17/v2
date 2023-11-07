@@ -4,24 +4,23 @@ include "db_conn.php";
 if (isset($_POST["submit"])) {
    $username = $_POST['username'];
    $password = $_POST['password'];
-   $access = $_POST['access'];
+   $conf_pass = $_POST['confirm_password'];
 
-   $sql = "INSERT INTO `crud`(`id`, `username`, `password`, `access`) VALUES (NULL,'$username','$password','$access')";
+   if ($password == $conf_pass) {
+      $sql = "INSERT INTO `crud`(`id`, `username`, `password`) VALUES (NULL,'$username','$password')";
+      $result = mysqli_query($conn, $sql);
 
-   $result = mysqli_query($conn, $sql);
-
-   if ($result) {
-      header("Location: index.php?msg=New record created successfully");
+      if ($result) {
+         header("Location: index.php?msg=New record created successfully");
+      } else {
+         echo "Failed: " . mysqli_error($conn);
+      }
    } else {
-      echo "Failed: " . mysqli_error($conn);
+      echo '<script>alert("different")</script>';
    }
 }
 
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,9 +39,11 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-      PHP Complete CRUD Application
-   </nav>
+   <!--nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
+      <br>
+   </nav-->
+
+   <br><br>
 
    <div class="container">
       <div class="text-center mb-4">
@@ -64,14 +65,27 @@ if (isset($_POST["submit"])) {
                   <input type="text" class="form-control" name="password" placeholder="password" required>
                </div>
             </div>
-
-            <div class="mb-3">
-               <label class="form-label">Access:</label>
-               <input type="text" class="form-control" name="access" placeholder="access" required>
+            <div class="row mb-3">
+               <div class="col">
+                  <label class="form-label">Confirm Password:</label>
+                  <input type="text" class="form-control" name="confirm_password" placeholder="password" required>
+               </div>
             </div>
 
+            <!--div class="mb-3">
+               <label class="form-label">Access:</label>
+               <input type="text" class="form-control" name="access" placeholder="access" required>
+
+               <select class="form-select" aria-label="Default select example" name="access">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+               </select>
+            </div-->
+
             <div>
-               <button type="submit" class="btn btn-success" name="submit">Save</button>
+               <button type="submit" class="btn btn-success" name="submit">Submit</button>
                <a href="index.php" class="btn btn-danger">Cancel</a>
             </div>
          </form>
