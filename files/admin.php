@@ -1,7 +1,8 @@
 <?php
 require_once 'db_config.php';
-$result = $conn->query("SHOW COLUMNS FROM participant FROM sql12657337");
+//$result = $conn->query("SHOW COLUMNS FROM participant FROM sql12657337");
 //$result = $conn->query("SHOW COLUMNS FROM participant FROM id21476807_archery");
+$result = $conn->query("SHOW COLUMNS FROM participant FROM archery");
 while ($row = $result->fetch_assoc()) {
   $data[] = $row;
 }
@@ -167,6 +168,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="icon" type="image/x-icon" href="images/title.ico">
   <title>Admin Page</title>
   <link rel="stylesheet" href="css\adminstyle.css">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body onload="loadfunc()">
@@ -222,6 +230,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </table>
       </div>
   </div>
+
+  <?php
+  include "user-index.php";
+  ?>
 
 
   <script>

@@ -50,7 +50,10 @@
             </form>
             <!--p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p-->
             <p class="w-100 text-center">
-              &mdash; <a href="view.php" target="_blank">View the scorecard </a>&mdash;
+              <a href="user-add.php"><u>Not Registered? Sign Up</u></a>
+            </p>
+            <p class="w-100 text-center">
+              <a href="view.php" target="_blank"><u>View the scorecard</u></a>
             </p>
             <p class="w-100 text-center">
               &mdash; <a href="data.php" target="_blank">Score entry</a>&mdash;
