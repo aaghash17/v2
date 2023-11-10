@@ -6,22 +6,27 @@ if (isset($_POST["submit"])) {
    $password = $_POST['password'];
    $conf_pass = $_POST['confirm_password'];
    if (strlen($username) > 3 && strlen($username) < 16) {
-      if (strlen($password) > 7 && strlen($password) < 16) {
-         if ($password == $conf_pass) {
-            $sql = "INSERT INTO `crud`(`id`, `username`, `password`) VALUES (NULL,'$username','$password')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-               echo '<script>alert("User created")</script>';
-               header("Location: login.php");
-               //header("Location: index.php?msg=New record created successfully");
+      $sql = "SELECT * FROM crud WHERE username = '$username'";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+         echo '<script>alert("Username already exists")</script>';
+      } else {
+         if (strlen($password) > 7 && strlen($password) < 16) {
+            if ($password == $conf_pass) {
+               $sql = "INSERT INTO `crud`(`id`, `username`, `password`) VALUES (NULL,'$username','$password')";
+               $result = mysqli_query($conn, $sql);
+               if ($result) {
+                  echo '<script>alert("User created")</script>';
+                  header("Location: login.php");
+               } else {
+                  echo "Failed: " . mysqli_error($conn);
+               }
             } else {
-               echo "Failed: " . mysqli_error($conn);
+               echo '<script>alert("Passwords dont match")</script>';
             }
          } else {
-            echo '<script>alert("Passwords dont match")</script>';
+            echo '<script>alert("Password must be 8 to 16 characters")</script>';
          }
-      } else {
-         echo '<script>alert("Password must be 8 to 16 characters")</script>';
       }
    } else {
       echo '<script>alert("Username must be 4 to 16 characters")</script>';
@@ -49,16 +54,12 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-   <!--nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-      <br>
-   </nav-->
 
    <br><br>
 
    <div class="container">
       <div class="text-center mb-4">
          <h3>Add New User</h3>
-         <!--p class="text-muted">Complete the form below to add a new user</p-->
       </div>
 
       <div class="container d-flex justify-content-center">
@@ -81,18 +82,6 @@ if (isset($_POST["submit"])) {
                   <input type="text" class="form-control" name="confirm_password" placeholder="password" required>
                </div>
             </div>
-
-            <!--div class="mb-3">
-               <label class="form-label">Access:</label>
-               <input type="text" class="form-control" name="access" placeholder="access" required>
-
-               <select class="form-select" aria-label="Default select example" name="access">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-               </select>
-            </div-->
 
             <div>
                <button type="submit" class="btn btn-success" name="submit">Submit</button>
