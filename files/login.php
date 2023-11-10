@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="img js-fullheight" style="background-image: url(images/bg.jpg)">
+<body class="bg-img bg-cover" style="background-image: url(images/bg.jpg)">
   <section class="ftco-section">
     <div class="container">
       <div class="row justify-content-center">
@@ -22,7 +22,7 @@
       <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
           <div class="login-wrap p-0">
-            <h3 class="mb-4 text-center">- Login -</h3>
+            <h3 class="mb-4 text-center"><b>Login</b></h3>
             <form action="#" class="signin-form">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" required />
@@ -72,8 +72,6 @@
   </section>
 
   <script src="js/jquery.min.js"></script>
-  <!--script src="js/popper.js"></script-->
-  <!--script src="js/bootstrap.min.js"></script-->
   <script src="js/main.js"></script>
 </body>
 

@@ -200,35 +200,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method='post' action='download.php'>
       <input type='submit' value='Export' name='Export'>
       <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
-      </form-->
+    </form>
 
-      <h2>Clear Table Data</h2>
-      <button onclick="clearTable()">ClearTable</button>
+    <h2>Clear Table Data</h2>
+    <button onclick="clearTable()">ClearTable</button>
 
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <?php
-              foreach ($columnArr as $value) {
-                echo "<th>" . $value . "</th>";
-              }
-              ?>
-            </tr>
-          </thead>
-          <tbody>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
             <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo "<tr>";
-              foreach ($columnArr as $a) {
-                echo "<td>" . $row[$a] . "</td>";
-              }
-              echo "</tr>";
+            foreach ($columnArr as $value) {
+              echo "<th>" . $value . "</th>";
             }
             ?>
-          </tbody>
-        </table>
-      </div>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            foreach ($columnArr as $a) {
+              echo "<td>" . $row[$a] . "</td>";
+            }
+            echo "</tr>";
+          }
+          ?>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <?php
@@ -237,8 +238,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
   <script>
-    var txt;
-
     function setSessionVariable(data) {
       var xhr = new XMLHttpRequest();
       xhr.open('POST', '', true);
@@ -276,17 +275,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     function clearTable() {
-      clearTableConfirm();
-      if (txt == 1)
-        setSessionVariable("3");
-    }
-
-    function clearTableConfirm() {
       if (confirm("Do you want to clear Table!")) {
-        txt = 1;
-      } else {
-        txt = 0;
-      }
+        setSessionVariable("3");
+      } else {}
     }
   </script>
 

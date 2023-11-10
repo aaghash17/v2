@@ -15,6 +15,8 @@
   <div class="header">
     <h1><?php require_once 'eventName.php'; ?><br>SCORESHEET</h1>
   </div>
+
+
   <div id="refreshedDiv">
     <?php require_once 'viewtable.php'; ?>
   </div>
