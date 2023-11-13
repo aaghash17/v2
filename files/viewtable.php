@@ -1,6 +1,6 @@
 <?php
 require_once 'db_config.php';
-$sql = "SELECT tboard,tplayer,pname,district,total FROM participant ORDER BY total desc";
+$sql = "SELECT tboard,tplayer,pname,district,category,total FROM participant ORDER BY total desc";
 $result = $conn->query($sql);
 ?>
 
@@ -13,6 +13,7 @@ $result = $conn->query($sql);
                         <th>TARGET</th>
                         <th>NAME</th>
                         <th>DISTRICT</th>
+                        <th>CATEGORY</th>
                         <th>SCORE</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@ $result = $conn->query($sql);
                                 echo $row['tplayer']; ?></td>
                             <td><?php echo $row['pname']; ?></td>
                             <td><?php echo $row['district']; ?></td>
+                            <td><?php echo $row['category']; ?></td>
                             <td><?php echo $row['total']; ?></td>
                     </tr>
 
@@ -46,6 +48,7 @@ $result = $conn->query($sql);
                         <th>TARGET</th>
                         <th>NAME</th>
                         <th>DISTRICT</th>
+                        <th>CATEGORY</th>
                         <th>SCORE</th>
                     </tr>
                 </thead>
@@ -58,6 +61,7 @@ $result = $conn->query($sql);
                                 echo $row['tplayer']; ?></td>
                             <td><?php echo $row['pname']; ?></td>
                             <td><?php echo $row['district']; ?></td>
+                            <td><?php echo $row['category']; ?></td>
                             <td><?php echo $row['total']; ?></td>
                     </tr>
                 <?php
