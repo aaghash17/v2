@@ -61,6 +61,12 @@ $result = $conn->query("SELECT * FROM participant");
 <?php
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  //if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  //  header("Location: login.php");
+  //  exit;
+  //} else {
+  //  $_SESSION["loggedin"] = false;
+  //}
   if (isset($_POST['data'])) {
     $data = $_POST['data'];
 
@@ -239,9 +245,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-          //if (act == 1) { result = JSON.parse(xhr.responseText); setdata(); }
-          //if (act == 2) { result = xhr.responseText; sum(); }
-          //if (act == 3) { result = xhr.responseText; }            
           if (data[0] == 1) {
             result = xhr.responseText;
             document.getElementById("event-name").value = result;

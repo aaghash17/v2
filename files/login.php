@@ -1,3 +1,35 @@
+<?php
+session_start();
+require_once 'db_config.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $inUsername = $_POST["username"];
+  $inPassword = $_POST["password"];
+
+  $sql = "SELECT * FROM crud where username='$inUsername'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    if ($inPassword == $row['password']) {
+      //echo "<script>alert('Access is " . $row['access'] . "');</script>";
+      $board = array('all', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+      if (in_array($row['access'], $board)) {
+        $variableB = $variableA;
+        $_SESSION["loggedin"] = true;
+        header("Location: data.php");
+      } else if ($row['access'] == "admin") {
+        echo "<script>alert('Access is admin');</script>";
+      } else {
+        echo "<script>alert('Access is not updated');</script>";
+      }
+    } else {
+      echo "<script>alert('Password is incorrect');</script>";
+    }
+  } else {
+    echo "<script>alert('Username doesnt exist');</script>";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +55,12 @@
         <div class="col-md-6 col-lg-4">
           <div class="login-wrap p-0">
             <h3 class="mb-4 text-center"><b>Login</b></h3>
-            <form action="#" class="signin-form">
+            <form method="post" action="" class="signin-form">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required />
+                <input type="text" name="username" class="form-control" placeholder="Username" required />
               </div>
               <div class="form-group">
-                <input id="password-field" type="password" class="form-control" placeholder="Password" required />
+                <input name="password" type="password" class="form-control" placeholder="Password" required />
                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
               </div>
               <div class="form-group">

@@ -10,6 +10,189 @@ function fetchvalue() {
     tplayer = document.getElementById("three").value;
   setSessionVariable("1" + tboard + tplayer);
 }
+
+// function setdata() {
+//   for (let i = 1; i <= 10; i++) {
+//     for (let j = 1; j <= 3; j++) {
+//       const elementId = `d${i}${j}`;
+//       document.getElementById(elementId).value = "";
+//     }
+//   }
+//   const labels = [
+//     "d11",
+//     "d12",
+//     "d13",
+//     "d21",
+//     "d22",
+//     "d23",
+//     "d31",
+//     "d32",
+//     "d33",
+//     "d41",
+//     "d42",
+//     "d43",
+//     "d51",
+//     "d52",
+//     "d53",
+//     "d61",
+//     "d62",
+//     "d63",
+//     "d71",
+//     "d72",
+//     "d73",
+//     "d81",
+//     "d82",
+//     "d83",
+//     "d91",
+//     "d92",
+//     "d93",
+//     "d101",
+//     "d102",
+//     "d103",
+//   ];
+
+//   document.getElementById("pname").innerHTML = result[0];
+//   document.getElementById("district").innerHTML = result[1];
+//   document.getElementById("category").innerHTML = result[2];
+
+//   for (let i = 3; i <= 34; i++) {
+//     const value = result[i];
+//     if (value !== 0) {
+//       document.getElementById(labels[i - 3]).value = value;
+//     }
+//   }
+//   sum();
+// }
+
+function sum() {
+  document.getElementById("total").innerHTML = "";
+  document.getElementById("s1").innerHTML = "";
+  document.getElementById("s2").innerHTML = "";
+  document.getElementById("s3").innerHTML = "";
+  document.getElementById("s4").innerHTML = "";
+  document.getElementById("s5").innerHTML = "";
+  document.getElementById("s6").innerHTML = "";
+  document.getElementById("s7").innerHTML = "";
+  document.getElementById("s8").innerHTML = "";
+  document.getElementById("s9").innerHTML = "";
+  document.getElementById("s10").innerHTML = "";
+
+  if (numin("d11") + numin("d12") + numin("d13") != 0) {
+    document.getElementById("s1").innerHTML =
+      numin("d11") + numin("d12") + numin("d13");
+  }
+  if (numin("d21") + numin("d22") + numin("d23") != 0) {
+    document.getElementById("s2").innerHTML =
+      numin("d21") + numin("d22") + numin("d23");
+  }
+  if (numin("d31") + numin("d32") + numin("d33") != 0) {
+    document.getElementById("s3").innerHTML =
+      numin("d31") + numin("d32") + numin("d33");
+  }
+  if (numin("d41") + numin("d42") + numin("d43") != 0) {
+    document.getElementById("s4").innerHTML =
+      numin("d41") + numin("d42") + numin("d43");
+  }
+  if (numin("d51") + numin("d52") + numin("d53") != 0) {
+    document.getElementById("s5").innerHTML =
+      numin("d51") + numin("d52") + numin("d53");
+  }
+  if (numin("d61") + numin("d62") + numin("d63") != 0) {
+    document.getElementById("s6").innerHTML =
+      numin("d61") + numin("d62") + numin("d63");
+  }
+  if (numin("d71") + numin("d72") + numin("d73") != 0) {
+    document.getElementById("s7").innerHTML =
+      numin("d71") + numin("d72") + numin("d73");
+  }
+  if (numin("d81") + numin("d82") + numin("d83") != 0) {
+    document.getElementById("s8").innerHTML =
+      numin("d81") + numin("d82") + numin("d83");
+  }
+  if (numin("d91") + numin("d92") + numin("d93") != 0) {
+    document.getElementById("s9").innerHTML =
+      numin("d91") + numin("d92") + numin("d93");
+  }
+  if (numin("d101") + numin("d102") + numin("d103") != 0) {
+    document.getElementById("s10").innerHTML =
+      numin("d101") + numin("d102") + numin("d103");
+  }
+
+  total =
+    lblin("s1") +
+    lblin("s2") +
+    lblin("s3") +
+    lblin("s4") +
+    lblin("s5") +
+    lblin("s6") +
+    lblin("s7") +
+    lblin("s8") +
+    lblin("s9") +
+    lblin("s10");
+  if (total != 0) {
+    document.getElementById("total").innerHTML = total;
+  }
+}
+function setvalue(pos) {
+  var tplayer = 0;
+  var tboard = document.getElementById("tboard_in");
+  var tboard = tboard.value;
+  if (document.getElementById("one").checked)
+    tplayer = document.getElementById("one").value;
+  if (document.getElementById("two").checked)
+    tplayer = document.getElementById("two").value;
+  if (document.getElementById("three").checked)
+    tplayer = document.getElementById("three").value;
+
+  if (tplayer == 0) {
+    alert("Player not selected");
+    document.getElementById(pos).value = "";
+  }
+  var re = numin(pos);
+  if (re >= 0 && re <= 10) {
+    setSessionVariable("2" + tboard + tplayer + "&" + pos + "&" + numin(pos));
+    sum();
+    setSessionVariable("3" + tboard + tplayer + "&" + total);
+  } else {
+    alert("Score ranges from 0 to 10");
+    fetchvalue();
+  }
+}
+
+function setSessionVariable(data) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      if (data[0] == 1) {
+        result = JSON.parse(xhr.responseText);
+        setdata();
+      }
+      if (data[0] == 2) {
+        result = xhr.responseText;
+        sum();
+      }
+      if (data[0] == 3) {
+        result = xhr.responseText;
+      }
+    }
+  };
+  xhr.send("data=" + encodeURIComponent(data));
+}
+
+function numin(pos) {
+  var val = parseInt(document.getElementById(pos).value);
+  if (isNaN(val)) val = 0;
+  return val;
+}
+
+function lblin(pos) {
+  var val = parseInt(document.getElementById(pos).textContent);
+  if (isNaN(val)) val = 0;
+  return val;
+}
+
 function setdata() {
   document.getElementById("d11").value = "";
   document.getElementById("d12").value = "";
@@ -138,132 +321,4 @@ function setdata() {
     document.getElementById("d103").value = result[34];
   }
   sum();
-}
-function sum() {
-  document.getElementById("total").innerHTML = "";
-  document.getElementById("s1").innerHTML = "";
-  document.getElementById("s2").innerHTML = "";
-  document.getElementById("s3").innerHTML = "";
-  document.getElementById("s4").innerHTML = "";
-  document.getElementById("s5").innerHTML = "";
-  document.getElementById("s6").innerHTML = "";
-  document.getElementById("s7").innerHTML = "";
-  document.getElementById("s8").innerHTML = "";
-  document.getElementById("s9").innerHTML = "";
-  document.getElementById("s10").innerHTML = "";
-
-  if (numin("d11") + numin("d12") + numin("d13") != 0) {
-    document.getElementById("s1").innerHTML =
-      numin("d11") + numin("d12") + numin("d13");
-  }
-  if (numin("d21") + numin("d22") + numin("d23") != 0) {
-    document.getElementById("s2").innerHTML =
-      numin("d21") + numin("d22") + numin("d23");
-  }
-  if (numin("d31") + numin("d32") + numin("d33") != 0) {
-    document.getElementById("s3").innerHTML =
-      numin("d31") + numin("d32") + numin("d33");
-  }
-  if (numin("d41") + numin("d42") + numin("d43") != 0) {
-    document.getElementById("s4").innerHTML =
-      numin("d41") + numin("d42") + numin("d43");
-  }
-  if (numin("d51") + numin("d52") + numin("d53") != 0) {
-    document.getElementById("s5").innerHTML =
-      numin("d51") + numin("d52") + numin("d53");
-  }
-  if (numin("d61") + numin("d62") + numin("d63") != 0) {
-    document.getElementById("s6").innerHTML =
-      numin("d61") + numin("d62") + numin("d63");
-  }
-  if (numin("d71") + numin("d72") + numin("d73") != 0) {
-    document.getElementById("s7").innerHTML =
-      numin("d71") + numin("d72") + numin("d73");
-  }
-  if (numin("d81") + numin("d82") + numin("d83") != 0) {
-    document.getElementById("s8").innerHTML =
-      numin("d81") + numin("d82") + numin("d83");
-  }
-  if (numin("d91") + numin("d92") + numin("d93") != 0) {
-    document.getElementById("s9").innerHTML =
-      numin("d91") + numin("d92") + numin("d93");
-  }
-  if (numin("d101") + numin("d102") + numin("d103") != 0) {
-    document.getElementById("s10").innerHTML =
-      numin("d101") + numin("d102") + numin("d103");
-  }
-
-  total =
-    lblin("s1") +
-    lblin("s2") +
-    lblin("s3") +
-    lblin("s4") +
-    lblin("s5") +
-    lblin("s6") +
-    lblin("s7") +
-    lblin("s8") +
-    lblin("s9") +
-    lblin("s10");
-  if (total != 0) {
-    document.getElementById("total").innerHTML = total;
-  }
-}
-function setvalue(pos) {
-  var tplayer = 0;
-  var tboard = document.getElementById("tboard_in");
-  var tboard = tboard.value;
-  if (document.getElementById("one").checked)
-    tplayer = document.getElementById("one").value;
-  if (document.getElementById("two").checked)
-    tplayer = document.getElementById("two").value;
-  if (document.getElementById("three").checked)
-    tplayer = document.getElementById("three").value;
-
-  if (tplayer == 0) {
-    alert("Player not selected");
-    document.getElementById(pos).value = "";
-  }
-  var re = numin(pos);
-  if (re >= 0 && re <= 10) {
-    setSessionVariable("2" + tboard + tplayer + "&" + pos + "&" + numin(pos));
-    sum();
-    setSessionVariable("3" + tboard + tplayer + "&" + total);
-  } else {
-    alert("Score ranges from 0 to 10");
-    fetchvalue();
-  }
-}
-
-function setSessionVariable(data) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      if (data[0] == 1) {
-        result = JSON.parse(xhr.responseText);
-        setdata();
-      }
-      if (data[0] == 2) {
-        result = xhr.responseText;
-        sum();
-      }
-      if (data[0] == 3) {
-        result = xhr.responseText;
-      }
-    }
-  };
-  xhr.send("data=" + encodeURIComponent(data));
-}
-
-function numin(pos) {
-  var val = parseInt(document.getElementById(pos).value);
-  if (isNaN(val)) val = 0;
-  return val;
-}
-
-function lblin(pos) {
-  var val = parseInt(document.getElementById(pos).textContent);
-  if (isNaN(val)) val = 0;
-  return val;
 }
