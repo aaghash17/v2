@@ -2,7 +2,7 @@
 require_once 'db_config.php';
 //$result = $conn->query("SHOW COLUMNS FROM participant FROM sql12657337");
 //$result = $conn->query("SHOW COLUMNS FROM participant FROM id21476807_archery");
-$result = $conn->query("SHOW COLUMNS FROM participant FROM archery");
+$result = $conn->query("SHOW COLUMNS FROM participant FROM " . $dbname);
 while ($row = $result->fetch_assoc()) {
   $data[] = $row;
 }
