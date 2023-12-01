@@ -171,66 +171,114 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="css\adminstyle.css">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <!-- Font Awesome -->
+  <link href="bootstrap-5.2.3-dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body onload="loadfunc()">
-  <div class="header">
-    <h1>Welcome, Admin!</h1>
-  </div>
 
-  <div class="content">
+  <div class="container mt-4">
 
+    <nav class="navbar navbar-dark bg-primary rounded py-4">
+      <div class="container text-center">
+        <br><span class="navbar-brand mb-0 h1" style="font-size: 2rem;">Admin Page</span><br>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <h4>Event Name</h4>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="event-name" aria-describedby="button-addon">
+        <button class="btn btn-primary" type="button" id="button-addon" onclick="myEvent()">Change</button>
+      </div>
+    </div>
+
+    <!--
     <h2>Event Name</h2>
     <input type="text" id="event-name" size="50">
     <button onclick="myEvent()">Change</button>
+  -->
 
-    <h2>Upload Excel and Insert Data</h2>
-    <form method="post" action="" enctype="multipart/form-data" id="import_form">
-      <a href="refer\example.csv" target="_blank">Download Sample Format</a><br>
-      <h6></h6>
-      <input type='file' name="importfile" id="importfile" accept=".csv">
-      <input type="submit" id="but_import" name="but_import" value="Import">
-    </form>
+    <div class="container mt-2">
+      <h4>Upload Excel and Insert Data</h4>
+      <form method="post" action="" enctype="multipart/form-data" id="import_form" class="mt-2">
+        <a href="refer\example.csv" target="_blank">Download Sample Format</a><br>
+        <h6></h6>
+        <div class="mb-3">
+          <label for="importfile" class="form-label">Choose Excel File (.csv)</label>
+          <input type='file' class="form-control" name="importfile" id="importfile" accept=".csv">
+        </div>
+        <input type="submit" class="btn btn-primary" id="but_import" name="but_import" value="Import">
+      </form>
+    </div>
 
-    <h2>Export Data</h2>
-    <form method='post' action='download.php'>
-      <input type='submit' value='Export' name='Export'>
-      <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
-    </form>
+    <!--
+  <h2>Upload Excel and Insert Data</h2>
+  <form method="post" action="" enctype="multipart/form-data" id="import_form">
+    <a href="refer\example.csv" target="_blank">Download Sample Format</a><br>
+    <h6></h6>
+    <input type='file' name="importfile" id="importfile" accept=".csv">
+    <input type="submit" id="but_import" name="but_import" value="Import">
+  </form>
+-->
 
-    <h2>Clear Table Data</h2>
-    <button onclick="clearTable()">ClearTable</button>
+    <div class="container mt-2">
+      <h4>Export Data</h4>
+      <form method='post' action='download.php'>
+        <button type='submit' class='btn btn-primary'>Export</button>
+        <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
+      </form>
+    </div>
+
+    <!--
+  <h2>Export Data</h2>
+  <form method='post' action='download.php'>
+    <input type='submit' value='Export' name='Export'>
+    <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
+  </form>
+-->
+
+    <div class="container mt-2">
+      <h4>Clear Table Data</h4>
+      <button type="button" class="btn btn-danger" onclick="clearTable()">Clear Table</button>
+    </div>
+
+    <!--
+  <h2>Clear Table Data</h2>
+  <button onclick="clearTable()">ClearTable</button>
+-->
 
 
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <?php
-            foreach ($columnArr as $value) {
-              echo "<th>" . $value . "</th>";
-            }
-            ?>
-          </tr>
-        </thead>
-        <tbody>
+  </div>
+
+
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
           <?php
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            foreach ($columnArr as $a) {
-              echo "<td>" . $row[$a] . "</td>";
-            }
-            echo "</tr>";
+          foreach ($columnArr as $value) {
+            echo "<th>" . $value . "</th>";
           }
           ?>
-        </tbody>
-      </table>
-    </div>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "<tr>";
+          foreach ($columnArr as $a) {
+            echo "<td>" . $row[$a] . "</td>";
+          }
+          echo "</tr>";
+        }
+        ?>
+      </tbody>
+    </table>
+  </div>
   </div>
 
   <?php
