@@ -6,7 +6,7 @@ echo $sql;
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-  header("Location: admin.php?msg=Data deleted successfully");
+  header("Location: admin.php");
 } else {
   echo "Failed: " . mysqli_error($conn);
 }

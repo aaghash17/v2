@@ -113,10 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="css\adminstyle.css">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link href="bootstrap-5.2.3-dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link href="bootstrap-5.2.3/bootstrap.min.css" rel="stylesheet">
+  <script src="bootstrap-5.2.3/bootstrap.bundle.min.js"></script>
 </head>
 
 <body onload="loadfunc()">
@@ -137,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </div>
 
-    <div class="container mt-2">
+    <div class="container mt-4">
       <h4>Upload Excel and Insert Data</h4>
       <form method="post" action="" enctype="multipart/form-data" id="import_form" class="mt-2">
         <a href="refer\example.csv" target="_blank">Download Sample Format</a><br>
@@ -150,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </form>
     </div>
 
-    <div class="container mt-2">
+    <div class="container mt-4">
       <h4>Export Data</h4>
       <form method='post' action='download.php'>
         <button type='submit' class='btn btn-primary'>Export</button>
@@ -158,50 +156,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </form>
     </div>
 
-    <div class="container mt-2">
+    <div class="container mt-4">
       <h4>Clear Table Data</h4>
       <button type="button" class="btn btn-danger" onclick="clearTable()">Clear Table</button>
     </div>
 
-    <?php
-    include "user-index.php";
-    ?>
+    <div class="container mt-4">
+      <h4>User credential</h4>
+      <?php
+      include "user-index.php";
+      ?>
+    </div>
 
-    <?php
-    $result = $conn->query("SHOW COLUMNS FROM participant FROM " . $dbname);
-    while ($row = $result->fetch_assoc()) {
-      $data[] = $row;
-    }
-    $columnArr = array_column($data, 'Field');
-    $result = $conn->query("SELECT * FROM participant");
-    ?>
+    <div class="container mt-4">
+      <h4>Data table</h4>
+      <?php
+      $result = $conn->query("SHOW COLUMNS FROM participant FROM " . $dbname);
+      while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+      }
+      $columnArr = array_column($data, 'Field');
+      $result = $conn->query("SELECT * FROM participant");
+      ?>
 
-    <div class="table-container">
-      <table class="table table-bordered">
-        <thead class="table-dark sticky-header">
-          <tr>
+      <div class="table-container">
+        <table class="table table-bordered">
+          <thead class="table-dark sticky-header">
+            <tr>
 
+              <?php
+              foreach ($columnArr as $value) {
+                echo "<th>" . $value . "</th>";
+              }
+              ?>
+            </tr>
+          </thead>
+          <tbody>
             <?php
-            foreach ($columnArr as $value) {
-              echo "<th>" . $value . "</th>";
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo "<tr>";
+              foreach ($columnArr as $a) {
+                echo "<td>" . $row[$a] . "</td>";
+              }
+              echo "</tr>";
             }
             ?>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            foreach ($columnArr as $a) {
-              echo "<td>" . $row[$a] . "</td>";
-            }
-            echo "</tr>";
-          }
-          ?>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+
 
   <script>
     function setSessionVariable(data) {

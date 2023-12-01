@@ -26,8 +26,8 @@ if (isset($_POST["submit"])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="bootstrap-5.2.3-dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+  <link href="bootstrap-5.2.3/bootstrap.min.css" rel="stylesheet">
+  <script src="bootstrap-5.2.3/bootstrap.bundle.min.js"></script>
   <title>User Edit</title>
 </head>
 
@@ -36,7 +36,6 @@ if (isset($_POST["submit"])) {
   <div class="container">
     <div class="text-center mb-4">
       <h3>Edit User Detail</h3>
-      <!--p class="text-muted">Click update after changing any information</p-->
     </div>
 
     <?php
