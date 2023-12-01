@@ -156,98 +156,98 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type='submit' class='btn btn-primary'>Export</button>
         <textarea name='export_data' style='display: none;'><?php require_once 'export_data.php' ?></textarea>
       </form>
-      </div-->
-
-      <div class="container mt-2">
-        <h4>Clear Table Data</h4>
-        <button type="button" class="btn btn-danger" onclick="clearTable()">Clear Table</button>
-      </div>
-
-      <?php
-      include "user-index.php";
-      ?>
-
-
-      <?php
-      $result = $conn->query("SHOW COLUMNS FROM participant FROM " . $dbname);
-      while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-      }
-      $columnArr = array_column($data, 'Field');
-      $result = $conn->query("SELECT * FROM participant");
-      ?>
-
-      <div class="table-container">
-        <table class="table table-bordered">
-          <thead class="table-dark sticky-header">
-            <tr>
-
-              <?php
-              foreach ($columnArr as $value) {
-                echo "<th>" . $value . "</th>";
-              }
-              ?>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo "<tr>";
-              foreach ($columnArr as $a) {
-                echo "<td>" . $row[$a] . "</td>";
-              }
-              echo "</tr>";
-            }
-            ?>
-          </tbody>
-        </table>
-      </div>
     </div>
 
-    <script>
-      function setSessionVariable(data) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            if (data[0] == 1) {
-              result = xhr.responseText;
-              document.getElementById("event-name").value = result;
+    <div class="container mt-2">
+      <h4>Clear Table Data</h4>
+      <button type="button" class="btn btn-danger" onclick="clearTable()">Clear Table</button>
+    </div>
+
+    <?php
+    include "user-index.php";
+    ?>
+
+
+    <?php
+    $result = $conn->query("SHOW COLUMNS FROM participant FROM " . $dbname);
+    while ($row = $result->fetch_assoc()) {
+      $data[] = $row;
+    }
+    $columnArr = array_column($data, 'Field');
+    $result = $conn->query("SELECT * FROM participant");
+    ?>
+
+    <div class="table-container">
+      <table class="table table-bordered">
+        <thead class="table-dark sticky-header">
+          <tr>
+
+            <?php
+            foreach ($columnArr as $value) {
+              echo "<th>" . $value . "</th>";
             }
-            if (data[0] == 2) {
-              result = xhr.responseText;
-              alert("Event name changed");
-              location.reload();
+            ?>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            foreach ($columnArr as $a) {
+              echo "<td>" . $row[$a] . "</td>";
             }
-            if (data[0] == 3) {
-              result = xhr.responseText;
-              alert("Table cleared");
-              location.reload();
-            }
+            echo "</tr>";
           }
-        };
-        xhr.send('data=' + encodeURIComponent(data));
-      }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-      function loadfunc() {
-        setSessionVariable("1");
-      }
+  <script>
+    function setSessionVariable(data) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          if (data[0] == 1) {
+            result = xhr.responseText;
+            document.getElementById("event-name").value = result;
+          }
+          if (data[0] == 2) {
+            result = xhr.responseText;
+            alert("Event name changed");
+            location.reload();
+          }
+          if (data[0] == 3) {
+            result = xhr.responseText;
+            alert("Table cleared");
+            location.reload();
+          }
+        }
+      };
+      xhr.send('data=' + encodeURIComponent(data));
+    }
 
-      function myEvent() {
-        setSessionVariable("2" + document.getElementById("event-name").value);
-      }
+    function loadfunc() {
+      setSessionVariable("1");
+    }
 
-      function clearTable() {
-        if (confirm("Do you want to clear Table!")) {
-          setSessionVariable("3");
-        } else {}
-      }
+    function myEvent() {
+      setSessionVariable("2" + document.getElementById("event-name").value);
+    }
 
-      function updateExportData() {
-        setSessionVariable("4");
-      }
-    </script>
+    function clearTable() {
+      if (confirm("Do you want to clear Table!")) {
+        setSessionVariable("3");
+      } else {}
+    }
+
+    function updateExportData() {
+      setSessionVariable("4");
+    }
+  </script>
 
 </body>
 
