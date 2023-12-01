@@ -167,7 +167,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include "user-index.php";
     ?>
 
-
     <?php
     $result = $conn->query("SHOW COLUMNS FROM participant FROM " . $dbname);
     while ($row = $result->fetch_assoc()) {

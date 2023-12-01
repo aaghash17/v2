@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
       } else {
          if (strlen($password) > 7 && strlen($password) < 16) {
             if ($password == $conf_pass) {
-               $sql = "INSERT INTO `crud`(`id`, `username`, `password`) VALUES (NULL,'$username','$password')";
+               $sql = "INSERT INTO `crud`(`username`, `password`) VALUES ('$username','$password')";
                $result = mysqli_query($conn, $sql);
                if ($result) {
                   echo '<script>alert("User created")</script>';

@@ -15,7 +15,6 @@ include "db_config.php";
   <table class="table table-hover text-center">
     <thead class="table-dark">
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Username</th>
         <th scope="col">Password</th>
         <th scope="col">Access</th>
@@ -29,13 +28,12 @@ include "db_config.php";
       while ($row = mysqli_fetch_assoc($result)) {
       ?>
         <tr>
-          <td><?php echo $row["id"] ?></td>
           <td><?php echo $row["username"] ?></td>
           <td><?php echo $row["password"] ?></td>
           <td><?php echo $row["access"] ?></td>
           <td>
-            <a href="user-edit.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-            <a href="user-delete.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+            <a href="user-edit.php?id=<?php echo $row["username"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="user-delete.php?id=<?php echo $row["username"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
           </td>
         </tr>
       <?php
