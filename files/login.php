@@ -37,8 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <title>Login</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--link rel="stylesheet" href="css/4.7.0/font-awesome.min.css"-->
   <link rel="icon" type="image/x-icon" href="images/title.ico">
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -95,8 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
   </section>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/login/jquery.min.js"></script>
+  <script src="js/login/popper.js"></script>
+  <script src="js/login/bootstrap.min.js"></script>
+  <script src="js/login/main.js"></script>
+
 </body>
 
 </html>
