@@ -242,10 +242,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setSessionVariable("3");
       } else {}
     }
-
-    function updateExportData() {
-      setSessionVariable("4");
-    }
   </script>
 
 </body>
