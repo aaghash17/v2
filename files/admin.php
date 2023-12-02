@@ -2,13 +2,13 @@
 require_once 'db_config.php';
 
 session_start();
+// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+//   header("Location: login.php");
+//   exit;
+// } else {
+//   $_SESSION["loggedin"] = false;
+// }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-  //  header("Location: login.php");
-  //  exit;
-  //} else {
-  //  $_SESSION["loggedin"] = false;
-  //}
   if (isset($_POST['data'])) {
     $data = $_POST['data'];
 

@@ -11,10 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if ($inPassword == $row['password']) {
-            //echo "<script>alert('Access is " . $row['access'] . "');</script>";
             $board = array('all', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
             if (in_array($row['access'], $board)) {
-                $variableB = $variableA;
+                $_SESSION["access"] = $row['access'];
                 $_SESSION["loggedin"] = true;
                 header("Location: data.php");
             } else if ($row['access'] == "admin") {

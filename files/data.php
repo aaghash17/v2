@@ -1,5 +1,11 @@
 <?php
 session_start();
+// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+//   header("Location: login.php");
+//   exit;
+// } else {
+//   $_SESSION["loggedin"] = false;
+// }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   require_once 'db_config.php';
   $data = $_POST['data'];
@@ -19,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $row = mysqli_fetch_assoc($result);
     $pname = $row['pname'];
     $district = $row['district'];
+    $category = $row['category'];
     $d11 = $row['d11'];
     $d12 = $row['d12'];
     $d13 = $row['d13'];
@@ -51,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $d103 = $row['d103'];
 
     $result = array(
-      "$pname", "$district", "1", "2", "3", "$d11", "$d12", "$d13", "$d21", "$d22", "$d23",
+      "$pname", "$district", "$category", "2", "3", "$d11", "$d12", "$d13", "$d21", "$d22", "$d23",
       "$d31", "$d32", "$d33", "$d41", "$d42", "$d43", "$d51", "$d52", "$d53", "$d61", "$d62", "$d63",
       "$d71", "$d72", "$d73", "$d81", "$d82", "$d83", "$d91", "$d92", "$d93", "$d101", "$d102", "$d103"
     );
@@ -122,21 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="header">
       <h2><?php require_once 'eventName.php'; ?></h2>
     </div>
-    <div class="custom-select">
-      <select name="tboard_in" id="tboard_in" onchange="fetchvalue();">
-        <option value="none" selected disabled hidden>Select a board</option>
-        <option value="1">Board-1</option>
-        <option value="2">Board-2</option>
-        <option value="3">Board-3</option>
-        <option value="4">Board-4</option>
-        <option value="5">Board-5</option>
-        <option value="6">Board-6</option>
-        <option value="7">Board-7</option>
-        <option value="8">Board-8</option>
-        <option value="9">Board-9</option>
-        <option value="10">Board-10</option>
-      </select>
-    </div>
+    <?php require_once "data_board.php" ?>
     <div class="warpper">
       <input class="radio" id="one" value="A" name="group" type="radio" onchange="fetchvalue();">
       <input class="radio" id="two" value="B" name="group" type="radio" onchange="fetchvalue();">
@@ -155,16 +148,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="group-1">
         <div class="group-1-text">NAME -&nbsp;</div>
         <div class="group-1-text">DISTRICT -&nbsp;</div>
-        <div class="group-1-text">SEX -&nbsp;</div>
-        <div class="group-1-text">AGE -&nbsp;</div>
-        <div class="group-1-text">BOW -&nbsp;</div>
+        <div class="group-1-text">CATEGORY -&nbsp;</div>
+        <!--div class="group-1-text">AGE -&nbsp;</div>
+        <div class="group-1-text">BOW -&nbsp;</div-->
       </div>
       <div class="group-2">
         <div class="group-2-text"><label id="pname">!!!</label></div>
         <div class="group-2-text"><label id="district">!!!</label></div>
-        <div class="group-2-text"><label id="sex">!!!</label></div>
-        <div class="group-2-text"><label id="age">!!!</label></div>
-        <div class="group-2-text"><label id="bow">!!!</label></div>
+        <div class="group-2-text"><label id="category">!!!</label></div>
+        <!--div class="group-2-text"><label id="age">!!!</label></div>
+        <div class="group-2-text"><label id="bow">!!!</label></div-->
       </div>
     </div>
 
