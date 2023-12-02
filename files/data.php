@@ -17,56 +17,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "SELECT * FROM participant where tboard='$tboard' AND tplayer='$tplayer'";
     $result = $conn->query($sql);
     $row = mysqli_fetch_assoc($result);
-    // $pname = $row['pname'];
-    // $district = $row['district'];
-    // $category = $row['category'];
-    // $d11 = $row['d11'];
-    // $d12 = $row['d12'];
-    // $d13 = $row['d13'];
-    // $d21 = $row['d21'];
-    // $d22 = $row['d22'];
-    // $d23 = $row['d23'];
-    // $d31 = $row['d31'];
-    // $d32 = $row['d32'];
-    // $d33 = $row['d33'];
-    // $d41 = $row['d41'];
-    // $d42 = $row['d42'];
-    // $d43 = $row['d43'];
-    // $d51 = $row['d51'];
-    // $d52 = $row['d52'];
-    // $d53 = $row['d53'];
-    // $d61 = $row['d61'];
-    // $d62 = $row['d62'];
-    // $d63 = $row['d63'];
-    // $d71 = $row['d71'];
-    // $d72 = $row['d72'];
-    // $d73 = $row['d73'];
-    // $d81 = $row['d81'];
-    // $d82 = $row['d82'];
-    // $d83 = $row['d83'];
-    // $d91 = $row['d91'];
-    // $d92 = $row['d92'];
-    // $d93 = $row['d93'];
-    // $d101 = $row['d101'];
-    // $d102 = $row['d102'];
-    // $d103 = $row['d103'];
-    // $result = array(
-    //   "$pname", "$district", "$category", "$d11", "$d12", "$d13", "$d21", "$d22", "$d23",
-    //   "$d31", "$d32", "$d33", "$d41", "$d42", "$d43", "$d51", "$d52", "$d53", "$d61", "$d62", "$d63",
-    //   "$d71", "$d72", "$d73", "$d81", "$d82", "$d83", "$d91", "$d92", "$d93", "$d101", "$d102", "$d103"
-    // );
-    // $result = json_encode($result);
-    // echo $result;
+    $pname = $row['pname'];
+    $district = $row['district'];
+    $d11 = $row['d11'];
+    $d12 = $row['d12'];
+    $d13 = $row['d13'];
+    $d21 = $row['d21'];
+    $d22 = $row['d22'];
+    $d23 = $row['d23'];
+    $d31 = $row['d31'];
+    $d32 = $row['d32'];
+    $d33 = $row['d33'];
+    $d41 = $row['d41'];
+    $d42 = $row['d42'];
+    $d43 = $row['d43'];
+    $d51 = $row['d51'];
+    $d52 = $row['d52'];
+    $d53 = $row['d53'];
+    $d61 = $row['d61'];
+    $d62 = $row['d62'];
+    $d63 = $row['d63'];
+    $d71 = $row['d71'];
+    $d72 = $row['d72'];
+    $d73 = $row['d73'];
+    $d81 = $row['d81'];
+    $d82 = $row['d82'];
+    $d83 = $row['d83'];
+    $d91 = $row['d91'];
+    $d92 = $row['d92'];
+    $d93 = $row['d93'];
+    $d101 = $row['d101'];
+    $d102 = $row['d102'];
+    $d103 = $row['d103'];
 
-    $fields = array($row['pname'], $row['district'], $row['category']);
-    $data = array();
-    for ($i = 1; $i <= 10; $i++) {
-      for ($j = 1; $j <= 3; $j++) {
-        $data["d{$i}{$j}"] = $row["d{$i}{$j}"];
-      }
-    }
-    $resultArray = array_merge($fields, $data);
-    echo json_encode($resultArray);
+    $result = array(
+      "$pname", "$district", "1", "2", "3", "$d11", "$d12", "$d13", "$d21", "$d22", "$d23",
+      "$d31", "$d32", "$d33", "$d41", "$d42", "$d43", "$d51", "$d52", "$d53", "$d61", "$d62", "$d63",
+      "$d71", "$d72", "$d73", "$d81", "$d82", "$d83", "$d91", "$d92", "$d93", "$d101", "$d102", "$d103"
+    );
+    $result = json_encode($result);
+    echo $result;
     exit;
   }
 
@@ -165,12 +155,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="group-1">
         <div class="group-1-text">NAME -&nbsp;</div>
         <div class="group-1-text">DISTRICT -&nbsp;</div>
-        <div class="group-1-text">CATEGORY -&nbsp;</div>
+        <div class="group-1-text">SEX -&nbsp;</div>
+        <div class="group-1-text">AGE -&nbsp;</div>
+        <div class="group-1-text">BOW -&nbsp;</div>
       </div>
       <div class="group-2">
         <div class="group-2-text"><label id="pname">!!!</label></div>
         <div class="group-2-text"><label id="district">!!!</label></div>
-        <div class="group-2-text"><label id="category">!!!</label></div>
+        <div class="group-2-text"><label id="sex">!!!</label></div>
+        <div class="group-2-text"><label id="age">!!!</label></div>
+        <div class="group-2-text"><label id="bow">!!!</label></div>
       </div>
     </div>
 
