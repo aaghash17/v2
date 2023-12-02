@@ -60,7 +60,6 @@ if (isset($_POST["submit"])) {
           include "user-edit-access.php";
           ?>
         </div>
-        <div onload="selfunc()"></div>
         <div>
           <button type="submit" class="btn btn-success" name="submit">Update</button>
           <a href="admin.php" class="btn btn-danger">Cancel</a>
@@ -68,11 +67,6 @@ if (isset($_POST["submit"])) {
       </form>
     </div>
   </div>
-  <script>
-    function selfunc() {
-      alert("Hello");
-    }
-  </script>
 
 </body>
 
