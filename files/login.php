@@ -1,5 +1,34 @@
 <?php
+session_start();
 require_once 'db_config.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $inUsername = $_POST["username"];
+    $inPassword = $_POST["password"];
+
+    $sql = "SELECT * FROM crud where username='$inUsername'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if ($inPassword == $row['password']) {
+            //echo "<script>alert('Access is " . $row['access'] . "');</script>";
+            $board = array('all', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+            if (in_array($row['access'], $board)) {
+                $variableB = $variableA;
+                $_SESSION["loggedin"] = true;
+                header("Location: data.php");
+            } else if ($row['access'] == "admin") {
+                header("Location: admin.php");
+            } else {
+                echo "<script>alert('Access is not updated');</script>";
+            }
+        } else {
+            echo "<script>alert('Password is incorrect');</script>";
+        }
+    } else {
+        echo "<script>alert('Username doesnt exist');</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,15 +69,15 @@ require_once 'db_config.php';
             <h3 class="text-center">Login</h3>
         </div>
         <div class="mb-3">
-            <form>
+            <form method="post" action="">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                    <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
                     </div>
                 </div>
                 <div class="mb-3 checkbox-container">
