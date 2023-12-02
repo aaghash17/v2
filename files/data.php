@@ -109,6 +109,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo $result;
     exit;
   }
+  if ($data[0] == "4") {
+    $result = $_SESSION["access"];;
+    if ($result == "all") {
+      $result = "yes";
+    } else {
+      $result = "no";
+    }
+    echo $result;
+    exit;
+  }
 }
 ?>
 
@@ -124,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="css\table.css">
 </head>
 
-<body>
+<body onload="setaccess()">
   <div class="mobile">
     <div class="header">
       <h2><?php require_once 'eventName.php'; ?></h2>

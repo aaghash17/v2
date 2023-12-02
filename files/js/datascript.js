@@ -1,4 +1,5 @@
-let result, act, total;
+let result, act, total, access;
+
 function fetchvalue() {
   var tboard = document.getElementById("tboard_in");
   var tboard = tboard.value;
@@ -10,6 +11,7 @@ function fetchvalue() {
     tplayer = document.getElementById("three").value;
   setSessionVariable("1" + tboard + tplayer);
 }
+
 function setdata() {
   document.getElementById("d11").value = "";
   document.getElementById("d12").value = "";
@@ -49,96 +51,127 @@ function setdata() {
   //document.getElementById("bow").innerHTML = result[4];
   if (result[5] != 0) {
     document.getElementById("d11").value = result[5];
+    if (access == "no") document.getElementById("d11").disabled = true;
   }
   if (result[6] != 0) {
     document.getElementById("d12").value = result[6];
+    if (access == "no") document.getElementById("d12").disabled = true;
   }
   if (result[7] != 0) {
     document.getElementById("d13").value = result[7];
+    if (access == "no") document.getElementById("d13").disabled = true;
   }
   if (result[8] != 0) {
     document.getElementById("d21").value = result[8];
+    if (access == "no") document.getElementById("d21").disabled = true;
   }
   if (result[9] != 0) {
     document.getElementById("d22").value = result[9];
+    if (access == "no") document.getElementById("d22").disabled = true;
   }
   if (result[10] != 0) {
     document.getElementById("d23").value = result[10];
+    if (access == "no") document.getElementById("d23").disabled = true;
   }
   if (result[11] != 0) {
     document.getElementById("d31").value = result[11];
+    if (access == "no") document.getElementById("d31").disabled = true;
   }
   if (result[12] != 0) {
     document.getElementById("d32").value = result[12];
+    if (access == "no") document.getElementById("d32").disabled = true;
   }
   if (result[13] != 0) {
     document.getElementById("d33").value = result[13];
+    if (access == "no") document.getElementById("d33").disabled = true;
   }
   if (result[14] != 0) {
     document.getElementById("d41").value = result[14];
+    if (access == "no") document.getElementById("d41").disabled = true;
   }
   if (result[15] != 0) {
     document.getElementById("d42").value = result[15];
+    if (access == "no") document.getElementById("d42").disabled = true;
   }
   if (result[16] != 0) {
     document.getElementById("d43").value = result[16];
+    if (access == "no") document.getElementById("d43").disabled = true;
   }
   if (result[17] != 0) {
     document.getElementById("d51").value = result[17];
+    if (access == "no") document.getElementById("d51").disabled = true;
   }
   if (result[18] != 0) {
     document.getElementById("d52").value = result[18];
+    if (access == "no") document.getElementById("d52").disabled = true;
   }
   if (result[19] != 0) {
     document.getElementById("d53").value = result[19];
+    if (access == "no") document.getElementById("d53").disabled = true;
   }
   if (result[20] != 0) {
     document.getElementById("d61").value = result[20];
+    if (access == "no") document.getElementById("d61").disabled = true;
   }
   if (result[21] != 0) {
     document.getElementById("d62").value = result[21];
+    if (access == "no") document.getElementById("d62").disabled = true;
   }
   if (result[22] != 0) {
     document.getElementById("d63").value = result[22];
+    if (access == "no") document.getElementById("d63").disabled = true;
   }
   if (result[23] != 0) {
     document.getElementById("d71").value = result[23];
+    if (access == "no") document.getElementById("d71").disabled = true;
   }
   if (result[24] != 0) {
     document.getElementById("d72").value = result[24];
+    if (access == "no") document.getElementById("d72").disabled = true;
   }
   if (result[25] != 0) {
     document.getElementById("d73").value = result[25];
+    if (access == "no") document.getElementById("d73").disabled = true;
   }
   if (result[26] != 0) {
     document.getElementById("d81").value = result[26];
+    if (access == "no") document.getElementById("d81").disabled = true;
   }
   if (result[27] != 0) {
     document.getElementById("d82").value = result[27];
+    if (access == "no") document.getElementById("d82").disabled = true;
   }
   if (result[28] != 0) {
     document.getElementById("d83").value = result[28];
+    if (access == "no") document.getElementById("d83").disabled = true;
   }
   if (result[29] != 0) {
     document.getElementById("d91").value = result[29];
+    if (access == "no") document.getElementById("d91").disabled = true;
   }
   if (result[30] != 0) {
     document.getElementById("d92").value = result[30];
+    if (access == "no") document.getElementById("d92").disabled = true;
   }
   if (result[31] != 0) {
     document.getElementById("d93").value = result[31];
+    if (access == "no") document.getElementById("d93").disabled = true;
   }
   if (result[32] != 0) {
     document.getElementById("d101").value = result[32];
+    if (access == "no") document.getElementById("d101").disabled = true;
   }
   if (result[33] != 0) {
     document.getElementById("d102").value = result[33];
+    if (access == "no") document.getElementById("d102").disabled = true;
   }
   if (result[34] != 0) {
     document.getElementById("d103").value = result[34];
+    if (access == "no") document.getElementById("d103").disabled = true;
   }
   sum();
 }
+
 function sum() {
   document.getElementById("total").innerHTML = "";
   document.getElementById("s1").innerHTML = "";
@@ -208,6 +241,7 @@ function sum() {
     document.getElementById("total").innerHTML = total;
   }
 }
+
 function setvalue(pos) {
   var tplayer = 0;
   var tboard = document.getElementById("tboard_in");
@@ -228,6 +262,7 @@ function setvalue(pos) {
     setSessionVariable("2" + tboard + tplayer + "&" + pos + "&" + numin(pos));
     sum();
     setSessionVariable("3" + tboard + tplayer + "&" + total);
+    if (access == "no") document.getElementById(pos).disabled = true;
   } else {
     alert("Score ranges from 0 to 10");
     fetchvalue();
@@ -251,6 +286,10 @@ function setSessionVariable(data) {
       if (data[0] == 3) {
         result = xhr.responseText;
       }
+      if (data[0] == 4) {
+        access = xhr.responseText;
+        setess(access);
+      }
     }
   };
   xhr.send("data=" + encodeURIComponent(data));
@@ -266,4 +305,12 @@ function lblin(pos) {
   var val = parseInt(document.getElementById(pos).textContent);
   if (isNaN(val)) val = 0;
   return val;
+}
+
+function setaccess() {
+  setSessionVariable("4");
+}
+
+function setess(tx) {
+  access = tx;
 }
