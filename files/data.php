@@ -220,13 +220,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">2</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d21" onchange="setvalue('d21');">
+            <input type="number" id="d21" onchange="setvalue('d21');">
           </div>
           <div class="c-2">
-            <input type="text" id="d22" onchange="setvalue('d22');">
+            <input type="number" id="d22" onchange="setvalue('d22');">
           </div>
           <div class="c-3">
-            <input type="text" id="d23" onchange="setvalue('d23');">
+            <input type="number" id="d23" onchange="setvalue('d23');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s2"></label></div>
@@ -237,13 +237,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">3</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d31" onchange="setvalue('d31');">
+            <input type="number" id="d31" onchange="setvalue('d31');">
           </div>
           <div class="c-2">
-            <input type="text" id="d32" onchange="setvalue('d32');">
+            <input type="number" id="d32" onchange="setvalue('d32');">
           </div>
           <div class="c-3">
-            <input type="text" id="d33" onchange="setvalue('d33');">
+            <input type="number" id="d33" onchange="setvalue('d33');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s3"></label></div>
@@ -254,13 +254,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">4</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d41" onchange="setvalue('d41');">
+            <input type="number" id="d41" onchange="setvalue('d41');">
           </div>
           <div class="c-2">
-            <input type="text" id="d42" onchange="setvalue('d42');">
+            <input type="number" id="d42" onchange="setvalue('d42');">
           </div>
           <div class="c-3">
-            <input type="text" id="d43" onchange="setvalue('d43');">
+            <input type="number" id="d43" onchange="setvalue('d43');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s4"></label></div>
@@ -271,13 +271,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">5</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d51" onchange="setvalue('d51');">
+            <input type="number" id="d51" onchange="setvalue('d51');">
           </div>
           <div class="c-2">
-            <input type="text" id="d52" onchange="setvalue('d52');">
+            <input type="number" id="d52" onchange="setvalue('d52');">
           </div>
           <div class="c-3">
-            <input type="text" id="d53" onchange="setvalue('d53');">
+            <input type="number" id="d53" onchange="setvalue('d53');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s5"></label></div>
@@ -288,13 +288,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">6</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d61" onchange="setvalue('d61');">
+            <input type="number" id="d61" onchange="setvalue('d61');">
           </div>
           <div class="c-2">
-            <input type="text" id="d62" onchange="setvalue('d62');">
+            <input type="number" id="d62" onchange="setvalue('d62');">
           </div>
           <div class="c-3">
-            <input type="text" id="d63" onchange="setvalue('d63');">
+            <input type="number" id="d63" onchange="setvalue('d63');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s6"></label></div>
@@ -306,13 +306,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">7</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d71" onchange="setvalue('d71');">
+            <input type="number" id="d71" onchange="setvalue('d71');">
           </div>
           <div class="c-2">
-            <input type="text" id="d72" onchange="setvalue('d72');">
+            <input type="number" id="d72" onchange="setvalue('d72');">
           </div>
           <div class="c-3">
-            <input type="text" id="d73" onchange="setvalue('d73');">
+            <input type="number" id="d73" onchange="setvalue('d73');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s7"></label></div>
@@ -324,13 +324,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">8</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d81" onchange="setvalue('d81');">
+            <input type="number" id="d81" onchange="setvalue('d81');">
           </div>
           <div class="c-2">
-            <input type="text" id="d82" onchange="setvalue('d82');">
+            <input type="number" id="d82" onchange="setvalue('d82');">
           </div>
           <div class="c-3">
-            <input type="text" id="d83" onchange="setvalue('d83');">
+            <input type="number" id="d83" onchange="setvalue('d83');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s8"></label></div>
@@ -342,13 +342,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">9</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d91" onchange="setvalue('d91');">
+            <input type="number" id="d91" onchange="setvalue('d91');">
           </div>
           <div class="c-2">
-            <input type="text" id="d92" onchange="setvalue('d92');">
+            <input type="number" id="d92" onchange="setvalue('d92');">
           </div>
           <div class="c-3">
-            <input type="text" id="d93" onchange="setvalue('d93');">
+            <input type="number" id="d93" onchange="setvalue('d93');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s9"></label></div>
@@ -360,13 +360,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="_text">10</div>
           </div>
           <div class="c-1">
-            <input type="text" id="d101" onchange="setvalue('d101');">
+            <input type="number" id="d101" onchange="setvalue('d101');">
           </div>
           <div class="c-2">
-            <input type="text" id="d102" onchange="setvalue('d102');">
+            <input type="number" id="d102" onchange="setvalue('d102');">
           </div>
           <div class="c-3">
-            <input type="text" id="d103" onchange="setvalue('d103');">
+            <input type="number" id="d103" onchange="setvalue('d103');">
           </div>
           <div class="c-sum">
             <div class="_text"><label id="s10"></label></div>

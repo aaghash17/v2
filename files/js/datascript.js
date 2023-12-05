@@ -13,36 +13,51 @@ function fetchvalue() {
 }
 
 function setdata() {
-  document.getElementById("d11").value = "";
-  document.getElementById("d12").value = "";
-  document.getElementById("d13").value = "";
-  document.getElementById("d21").value = "";
-  document.getElementById("d22").value = "";
-  document.getElementById("d23").value = "";
-  document.getElementById("d31").value = "";
-  document.getElementById("d32").value = "";
-  document.getElementById("d33").value = "";
-  document.getElementById("d41").value = "";
-  document.getElementById("d42").value = "";
-  document.getElementById("d43").value = "";
-  document.getElementById("d51").value = "";
-  document.getElementById("d52").value = "";
-  document.getElementById("d53").value = "";
-  document.getElementById("d61").value = "";
-  document.getElementById("d62").value = "";
-  document.getElementById("d63").value = "";
-  document.getElementById("d71").value = "";
-  document.getElementById("d72").value = "";
-  document.getElementById("d73").value = "";
-  document.getElementById("d81").value = "";
-  document.getElementById("d82").value = "";
-  document.getElementById("d83").value = "";
-  document.getElementById("d91").value = "";
-  document.getElementById("d92").value = "";
-  document.getElementById("d93").value = "";
-  document.getElementById("d101").value = "";
-  document.getElementById("d102").value = "";
-  document.getElementById("d103").value = "";
+  for (var i = 1; i <= 10; i++) {
+    for (var j = 1; j <= 3; j++) {
+      var inputId = "d" + i + j;
+      var inputElement = document.getElementById(inputId);
+
+      if (inputElement) {
+        inputElement.disabled = false;
+        inputElement.value = "";
+      }
+    }
+  }
+  // document.getElementById("d11").disabled = false;
+  // document.getElementById("d12").disabled = false;
+  // document.getElementById("d13").disabled = false;
+
+  // document.getElementById("d11").value = "";
+  // document.getElementById("d12").value = "";
+  // document.getElementById("d13").value = "";
+  // document.getElementById("d21").value = "";
+  // document.getElementById("d22").value = "";
+  // document.getElementById("d23").value = "";
+  // document.getElementById("d31").value = "";
+  // document.getElementById("d32").value = "";
+  // document.getElementById("d33").value = "";
+  // document.getElementById("d41").value = "";
+  // document.getElementById("d42").value = "";
+  // document.getElementById("d43").value = "";
+  // document.getElementById("d51").value = "";
+  // document.getElementById("d52").value = "";
+  // document.getElementById("d53").value = "";
+  // document.getElementById("d61").value = "";
+  // document.getElementById("d62").value = "";
+  // document.getElementById("d63").value = "";
+  // document.getElementById("d71").value = "";
+  // document.getElementById("d72").value = "";
+  // document.getElementById("d73").value = "";
+  // document.getElementById("d81").value = "";
+  // document.getElementById("d82").value = "";
+  // document.getElementById("d83").value = "";
+  // document.getElementById("d91").value = "";
+  // document.getElementById("d92").value = "";
+  // document.getElementById("d93").value = "";
+  // document.getElementById("d101").value = "";
+  // document.getElementById("d102").value = "";
+  // document.getElementById("d103").value = "";
 
   document.getElementById("pname").innerHTML = result[0];
   document.getElementById("district").innerHTML = result[1];
@@ -314,3 +329,8 @@ function setaccess() {
 function setess(tx) {
   access = tx;
 }
+
+document.getElementById("d21").addEventListener("input", function (event) {
+  var inputValue = this.value;
+  inputValue = inputValue.replace(/[eE+-]/g, "");
+});
