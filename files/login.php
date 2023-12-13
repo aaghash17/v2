@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script>
         document.getElementById('showPassword').addEventListener('change', function() {
-            const passwordInput = document.getElementById('password');
+            const passwordInput = document.getElementsByName('password')[0];
             passwordInput.type = this.checked ? 'text' : 'password';
         });
     </script>
