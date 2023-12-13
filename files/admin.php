@@ -156,10 +156,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </form>
     </div>
 
-    <div class="container mt-4">
+    <!--div class="container mt-4">
       <h4>Clear Table Data</h4>
       <button type="button" class="btn btn-danger" onclick="clearTable()">Clear Table</button>
-    </div>
+    </div-->
 
     <div class="container mt-4">
       <h4>User credential</h4>
