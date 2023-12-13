@@ -95,9 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p class="w-100 text-center">
             <a href="view.php" target="_blank"><u>View the scorecard</u></a>
         </p>
-        <p class="w-100 text-center">
+        <!--p class="w-100 text-center">
             &mdash; <a href="data.php" target="_blank">Score entry</a>&mdash;
-        </p>
+        </p-->
         <p class="w-100 text-center">
             &mdash; <a href="admin.php" target="_blank">Admin Page</a>&mdash;
         </p>
