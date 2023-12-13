@@ -162,7 +162,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div-->
 
     <div class="container mt-4">
-      <h4>User credential</h4>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h4 class="d-inline-block">User credential</h4>
+          <button type="button" class="btn btn-primary ms-2">+</button>
+        </div>
+      </div>
       <?php require_once "user-index.php"; ?>
     </div>
 
