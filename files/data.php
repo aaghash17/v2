@@ -142,20 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <h2><?php require_once 'eventName.php'; ?></h2>
     </div>
     <?php require_once "data_board.php" ?>
-    <div class="warpper">
-    <input class="radio" id="one" value="A" name="group" type="radio" onchange="fetchvalue();">
-    <input class="radio" id="two" value="B" name="group" type="radio" onchange="fetchvalue();">
-    <input class="radio" id="three" value="C" name="group" type="radio" onchange="fetchvalue();">
-    <input class="radio" id="four" value="D" name="group" type="radio" onchange="fetchvalue();">
-
-    <div class="tabs">
-      <label class="tab" id="one-tab" for="one">A</label>
-      <label class="tab" id="two-tab" for="two">B</label>
-      <label class="tab" id="three-tab" for="three">C</label>
-      <label class="tab" id="four-tab" for="four">D</label>
-    </div>
-  </div>
-
+    
     <div class="person-details">
       <div class="group-1">
         <div class="group-1-text">NAME -&nbsp;</div>
