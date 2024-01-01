@@ -61,9 +61,9 @@ function setdata() {
 
   document.getElementById("pname").innerHTML = result[0];
   document.getElementById("district").innerHTML = result[1];
-  document.getElementById("category").innerHTML = result[2];
-  //document.getElementById("age").innerHTML = result[3];
-  //document.getElementById("bow").innerHTML = result[4];
+  document.getElementById("age").innerHTML = result[2];
+  document.getElementById("sex").innerHTML = result[3];
+  document.getElementById("bow").innerHTML = result[4];
   if (result[5] != 0) {
     document.getElementById("d11").value = result[5];
     if (access == "no") document.getElementById("d11").disabled = true;

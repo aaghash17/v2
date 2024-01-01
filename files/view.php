@@ -29,14 +29,10 @@ require_once 'db_config.php';
       </div>
     </nav>
 
-    <div class="pt-5 px-5">
-      <div class="px-5">
-        <div class="px-5">
-          <div class="px-5">
-            <div class="px-5"><?php require_once 'viewtable1.php'; ?></div>
-          </div>
-        </div>
-      </div>
+    <div class="pt-5">
+    <div class="px-5">
+    <?php require_once 'viewtable1.php'; ?>
+    </div>
     </div>
 
     <script>

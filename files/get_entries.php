@@ -9,7 +9,7 @@ require_once "db_config.php";
 $start = $_GET['start'];
 $batchSize = $_GET['batchSize'];
 
-$sql = "SELECT tboard,tplayer,pname,district,category,total FROM participant ORDER BY total desc LIMIT $start, $batchSize";
+$sql = "SELECT tboard,tplayer,pname,district,age,sex,bow,total FROM participant ORDER BY total desc LIMIT $start, $batchSize";
 
 $result = $conn->query($sql);
 

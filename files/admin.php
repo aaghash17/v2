@@ -77,14 +77,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               $tplayer = $data[1];
               $pname = $data[2];
               $district = $data[3];
-              $category = $data[4];
-              $sql = "select count(*) as allcount from participant where pname='" . $pname . "' and tboard='" . $tboard . "' and  tplayer='" . $tplayer .  "' and district='" . $district . "' and category='" . $category  . "'";
+              $age = $data[4];
+              $sex = $data[5];
+              $bow = $data[6];
+              $sql = "select count(*) as allcount from participant where pname='" . $pname . "' and tboard='" . $tboard . "' and  tplayer='" . $tplayer .  "' and district='" . $district . "' and age='" . $age . "'  and sex='" . $sex . "' and bow='" . $bow  . "'";
               $retrieve_data = mysqli_query($conn, $sql);
               $row = mysqli_fetch_array($retrieve_data);
               $count = $row['allcount'];
               if ($count == 0) {
 
-                $insert_query = "insert into participant(pname,tboard,tplayer,district,category) values('" . $pname . "','" . $tboard . "','" . $tplayer . "','" . $district . "','" . $category . "' )";
+                $insert_query = "insert into participant(pname,tboard,tplayer,district,age,sex,bow) values('" . $pname . "','" . $tboard . "','" . $tplayer . "','" . $district . "','" . $age . "','" . $sex . "','" . $bow . "' )";
                 mysqli_query($conn, $insert_query);
               }
             }

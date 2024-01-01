@@ -13,7 +13,9 @@ require_once 'db_config.php';
                         <th>TARGET</th>
                         <th>NAME</th>
                         <th>DISTRICT</th>
-                        <th>CATEGORY</th>
+                        <th>AGE</th>
+                        <th>SEX</th>
+                        <th>BOW</th>
                         <th>SCORE</th>
                     </tr>
                 </thead>
@@ -36,7 +38,7 @@ require_once 'db_config.php';
                 } else {
                     total = entry.total;
                 }
-                row.innerHTML = '<td>' + entry.tboard + entry.tplayer + '</td><td>' + entry.pname + '</td><td>' + entry.district + '</td><td>' + entry.category + '</td><td>' + total + '</td>';
+                row.innerHTML = '<td>' + entry.tboard + entry.tplayer + '</td><td>' + entry.pname + '</td><td>' + entry.district + '</td><td>' + entry.age + '</td><td>' + entry.sex + '</td><td>' + entry.bow + '</td><td>' + total + '</td>';
                 tableBody.appendChild(row);
             });
         }
