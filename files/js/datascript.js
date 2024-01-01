@@ -9,6 +9,8 @@ function fetchvalue() {
     tplayer = document.getElementById("two").value;
   if (document.getElementById("three").checked)
     tplayer = document.getElementById("three").value;
+  if (document.getElementById("four").checked)
+    tplayer = document.getElementById("four").value;
   setSessionVariable("1" + tboard + tplayer);
 }
 
@@ -267,7 +269,8 @@ function setvalue(pos) {
     tplayer = document.getElementById("two").value;
   if (document.getElementById("three").checked)
     tplayer = document.getElementById("three").value;
-
+  if (document.getElementById("four").checked)
+    tplayer = document.getElementById("four").value;
   if (tplayer == 0) {
     alert("Player not selected");
     document.getElementById(pos).value = "";
